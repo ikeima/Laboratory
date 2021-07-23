@@ -1,0 +1,416 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LaboratoryModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Accountants">
+    <Key>
+      <PropertyRef Name="Accountant_id" />
+    </Key>
+    <Property Name="Accountant_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="User_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_Accountants_Users" FromRole="Accountants" ToRole="Users" />
+    <NavigationProperty Name="Accounts" Relationship="Self.FK_Accounts_Accountants1" FromRole="Accountants" ToRole="Accounts" />
+  </EntityType>
+  <EntityType Name="Accounts">
+    <Key>
+      <PropertyRef Name="Account_id" />
+    </Key>
+    <Property Name="Account_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Accountant_id" Type="Int32" />
+    <Property Name="Insurance_company_id" Type="Int32" />
+    <Property Name="Number" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Accountants" Relationship="Self.FK_Accounts_Accountants1" FromRole="Accounts" ToRole="Accountants" />
+    <NavigationProperty Name="Insurance_companies" Relationship="Self.FK_Accounts_Insurance_companies" FromRole="Accounts" ToRole="Insurance_companies" />
+  </EntityType>
+  <EntityType Name="Analyzers">
+    <Key>
+      <PropertyRef Name="Analyzer_id" />
+    </Key>
+    <Property Name="Analyzer_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Analyzers_data" Relationship="Self.FK_Analyzers_data_Analyzers" FromRole="Analyzers" ToRole="Analyzers_data" />
+    <NavigationProperty Name="Completed_service" Relationship="Self.FK_Completed_service_Analyzers" FromRole="Analyzers" ToRole="Completed_service" />
+  </EntityType>
+  <EntityType Name="Analyzers_data">
+    <Key>
+      <PropertyRef Name="Data_id" />
+    </Key>
+    <Property Name="Data_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Entrance_date_time" Type="DateTime" Precision="3" />
+    <Property Name="Complete_time_in_sec" Type="Int32" />
+    <Property Name="Analyzer_id" Type="Int32" />
+    <NavigationProperty Name="Analyzers" Relationship="Self.FK_Analyzers_data_Analyzers" FromRole="Analyzers_data" ToRole="Analyzers" />
+  </EntityType>
+  <EntityType Name="Completed_service">
+    <Key>
+      <PropertyRef Name="Completed_service_id" />
+    </Key>
+    <Property Name="Completed_service_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Service_code" Type="Int32" Nullable="false" />
+    <Property Name="Complete_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Technician_id" Type="Int32" Nullable="false" />
+    <Property Name="Analyzer_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Analyzers" Relationship="Self.FK_Completed_service_Analyzers" FromRole="Completed_service" ToRole="Analyzers" />
+    <NavigationProperty Name="Services" Relationship="Self.FK_Completed_service_Services" FromRole="Completed_service" ToRole="Services" />
+  </EntityType>
+  <EntityType Name="History">
+    <Key>
+      <PropertyRef Name="History_id" />
+    </Key>
+    <Property Name="History_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="User_id" Type="Int32" Nullable="false" />
+    <Property Name="Enter_date_time" Type="DateTime" Precision="3" />
+    <Property Name="Logout_date_time" Type="DateTime" Precision="3" />
+    <Property Name="Is_succes" Type="Boolean" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_History_Users" FromRole="History" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Insurance_companies">
+    <Key>
+      <PropertyRef Name="Insurance_company_id" />
+    </Key>
+    <Property Name="Insurance_company_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Adress" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TIN" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Settlement_account" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="BIC" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Accounts" Relationship="Self.FK_Accounts_Insurance_companies" FromRole="Insurance_companies" ToRole="Accounts" />
+    <NavigationProperty Name="Patients" Relationship="Self.FK_Patients_Insurance_companies" FromRole="Insurance_companies" ToRole="Patients" />
+  </EntityType>
+  <EntityType Name="Patients">
+    <Key>
+      <PropertyRef Name="Patient_id" />
+    </Key>
+    <Property Name="Patient_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Birth_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Passport_number_series" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Phone" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Insurance_policy_number" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Insurance_policy_type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Insurance_company_id" Type="Int32" Nullable="false" />
+    <Property Name="First_name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Last_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Insurance_companies" Relationship="Self.FK_Patients_Insurance_companies" FromRole="Patients" ToRole="Insurance_companies" />
+    <NavigationProperty Name="Patients_services" Relationship="Self.FK_Patients_services_Patients" FromRole="Patients" ToRole="Patients_services" />
+    <NavigationProperty Name="Orders" Relationship="LaboratoryModel.FK_Orders_Patients" FromRole="Patients" ToRole="Orders" />
+  </EntityType>
+  <EntityType Name="Patients_services">
+    <Key>
+      <PropertyRef Name="Patients_services_id" />
+    </Key>
+    <Property Name="Service_code" Type="Int32" Nullable="false" />
+    <Property Name="Patient_id" Type="Int32" Nullable="false" />
+    <Property Name="Patients_services_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Patients" Relationship="Self.FK_Patients_services_Patients" FromRole="Patients_services" ToRole="Patients" />
+    <NavigationProperty Name="Services" Relationship="Self.FK_Patients_services_Services" FromRole="Patients_services" ToRole="Services" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="Role_code" />
+    </Key>
+    <Property Name="Role_code" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Role_name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_Users_Roles" FromRole="Roles" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Services">
+    <Key>
+      <PropertyRef Name="Service_code" />
+    </Key>
+    <Property Name="Service_code" Type="Int32" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Cost" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <NavigationProperty Name="Completed_service" Relationship="Self.FK_Completed_service_Services" FromRole="Services" ToRole="Completed_service" />
+    <NavigationProperty Name="Patients_services" Relationship="Self.FK_Patients_services_Services" FromRole="Services" ToRole="Patients_services" />
+    <NavigationProperty Name="Technicians" Relationship="Self.FK_Technicians_Services" FromRole="Services" ToRole="Technicians" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Technicians">
+    <Key>
+      <PropertyRef Name="Technician_id" />
+    </Key>
+    <Property Name="Technician_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="User_id" Type="Int32" Nullable="false" />
+    <Property Name="Service_code" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Services" Relationship="Self.FK_Technicians_Services" FromRole="Technicians" ToRole="Services" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_Technicians_Users" FromRole="Technicians" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="User_id" />
+    </Key>
+    <Property Name="User_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Login" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="First_name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Last_name" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Patronymic" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Role_code" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Last_enter_date_time" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Last_logout_date_time" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IP" Type="String" MaxLength="16" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Accountants" Relationship="Self.FK_Accountants_Users" FromRole="Users" ToRole="Accountants" />
+    <NavigationProperty Name="History" Relationship="Self.FK_History_Users" FromRole="Users" ToRole="History" />
+    <NavigationProperty Name="Roles" Relationship="Self.FK_Users_Roles" FromRole="Users" ToRole="Roles" />
+    <NavigationProperty Name="Technicians" Relationship="Self.FK_Technicians_Users" FromRole="Users" ToRole="Technicians" />
+  </EntityType>
+  <Association Name="FK_Accountants_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Accountants" Type="Self.Accountants" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="User_id" />
+      </Principal>
+      <Dependent Role="Accountants">
+        <PropertyRef Name="User_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Accounts_Accountants1">
+    <End Role="Accountants" Type="Self.Accountants" Multiplicity="0..1" />
+    <End Role="Accounts" Type="Self.Accounts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Accountants">
+        <PropertyRef Name="Accountant_id" />
+      </Principal>
+      <Dependent Role="Accounts">
+        <PropertyRef Name="Accountant_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Accounts_Insurance_companies">
+    <End Role="Insurance_companies" Type="Self.Insurance_companies" Multiplicity="0..1" />
+    <End Role="Accounts" Type="Self.Accounts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Insurance_companies">
+        <PropertyRef Name="Insurance_company_id" />
+      </Principal>
+      <Dependent Role="Accounts">
+        <PropertyRef Name="Insurance_company_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Analyzers_data_Analyzers">
+    <End Role="Analyzers" Type="Self.Analyzers" Multiplicity="0..1" />
+    <End Role="Analyzers_data" Type="Self.Analyzers_data" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Analyzers">
+        <PropertyRef Name="Analyzer_id" />
+      </Principal>
+      <Dependent Role="Analyzers_data">
+        <PropertyRef Name="Analyzer_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Completed_service_Analyzers">
+    <End Role="Analyzers" Type="Self.Analyzers" Multiplicity="1" />
+    <End Role="Completed_service" Type="Self.Completed_service" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Analyzers">
+        <PropertyRef Name="Analyzer_id" />
+      </Principal>
+      <Dependent Role="Completed_service">
+        <PropertyRef Name="Analyzer_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Completed_service_Services">
+    <End Role="Services" Type="Self.Services" Multiplicity="1" />
+    <End Role="Completed_service" Type="Self.Completed_service" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Services">
+        <PropertyRef Name="Service_code" />
+      </Principal>
+      <Dependent Role="Completed_service">
+        <PropertyRef Name="Service_code" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_History_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="History" Type="Self.History" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="User_id" />
+      </Principal>
+      <Dependent Role="History">
+        <PropertyRef Name="User_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Patients_Insurance_companies">
+    <End Role="Insurance_companies" Type="Self.Insurance_companies" Multiplicity="1" />
+    <End Role="Patients" Type="Self.Patients" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Insurance_companies">
+        <PropertyRef Name="Insurance_company_id" />
+      </Principal>
+      <Dependent Role="Patients">
+        <PropertyRef Name="Insurance_company_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Patients_services_Patients">
+    <End Role="Patients" Type="Self.Patients" Multiplicity="1" />
+    <End Role="Patients_services" Type="Self.Patients_services" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patients">
+        <PropertyRef Name="Patient_id" />
+      </Principal>
+      <Dependent Role="Patients_services">
+        <PropertyRef Name="Patient_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Patients_services_Services">
+    <End Role="Services" Type="Self.Services" Multiplicity="1" />
+    <End Role="Patients_services" Type="Self.Patients_services" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Services">
+        <PropertyRef Name="Service_code" />
+      </Principal>
+      <Dependent Role="Patients_services">
+        <PropertyRef Name="Service_code" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_Roles">
+    <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+    <End Role="Users" Type="Self.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="Role_code" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="Role_code" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Technicians_Services">
+    <End Role="Services" Type="Self.Services" Multiplicity="1" />
+    <End Role="Technicians" Type="Self.Technicians" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Services">
+        <PropertyRef Name="Service_code" />
+      </Principal>
+      <Dependent Role="Technicians">
+        <PropertyRef Name="Service_code" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Technicians_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Technicians" Type="Self.Technicians" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="User_id" />
+      </Principal>
+      <Dependent Role="Technicians">
+        <PropertyRef Name="User_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="LaboratoryEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Accountants" EntityType="Self.Accountants" />
+    <EntitySet Name="Accounts" EntityType="Self.Accounts" />
+    <EntitySet Name="Analyzers" EntityType="Self.Analyzers" />
+    <EntitySet Name="Analyzers_data" EntityType="Self.Analyzers_data" />
+    <EntitySet Name="Completed_service" EntityType="Self.Completed_service" />
+    <EntitySet Name="History" EntityType="Self.History" />
+    <EntitySet Name="Insurance_companies" EntityType="Self.Insurance_companies" />
+    <EntitySet Name="Patients" EntityType="Self.Patients" />
+    <EntitySet Name="Patients_services" EntityType="Self.Patients_services" />
+    <EntitySet Name="Roles" EntityType="Self.Roles" />
+    <EntitySet Name="Services" EntityType="Self.Services" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="Technicians" EntityType="Self.Technicians" />
+    <EntitySet Name="Users" EntityType="Self.Users" />
+    <AssociationSet Name="FK_Accountants_Users" Association="Self.FK_Accountants_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Accountants" EntitySet="Accountants" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Accounts_Accountants1" Association="Self.FK_Accounts_Accountants1">
+      <End Role="Accountants" EntitySet="Accountants" />
+      <End Role="Accounts" EntitySet="Accounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Accounts_Insurance_companies" Association="Self.FK_Accounts_Insurance_companies">
+      <End Role="Insurance_companies" EntitySet="Insurance_companies" />
+      <End Role="Accounts" EntitySet="Accounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Analyzers_data_Analyzers" Association="Self.FK_Analyzers_data_Analyzers">
+      <End Role="Analyzers" EntitySet="Analyzers" />
+      <End Role="Analyzers_data" EntitySet="Analyzers_data" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Completed_service_Analyzers" Association="Self.FK_Completed_service_Analyzers">
+      <End Role="Analyzers" EntitySet="Analyzers" />
+      <End Role="Completed_service" EntitySet="Completed_service" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Completed_service_Services" Association="Self.FK_Completed_service_Services">
+      <End Role="Services" EntitySet="Services" />
+      <End Role="Completed_service" EntitySet="Completed_service" />
+    </AssociationSet>
+    <AssociationSet Name="FK_History_Users" Association="Self.FK_History_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="History" EntitySet="History" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Patients_Insurance_companies" Association="Self.FK_Patients_Insurance_companies">
+      <End Role="Insurance_companies" EntitySet="Insurance_companies" />
+      <End Role="Patients" EntitySet="Patients" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Patients_services_Patients" Association="Self.FK_Patients_services_Patients">
+      <End Role="Patients" EntitySet="Patients" />
+      <End Role="Patients_services" EntitySet="Patients_services" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Patients_services_Services" Association="Self.FK_Patients_services_Services">
+      <End Role="Services" EntitySet="Services" />
+      <End Role="Patients_services" EntitySet="Patients_services" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_Roles" Association="Self.FK_Users_Roles">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Technicians_Services" Association="Self.FK_Technicians_Services">
+      <End Role="Services" EntitySet="Services" />
+      <End Role="Technicians" EntitySet="Technicians" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Technicians_Users" Association="Self.FK_Technicians_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Technicians" EntitySet="Technicians" />
+    </AssociationSet>
+    <EntitySet Name="Orders" EntityType="LaboratoryModel.Orders" />
+    <AssociationSet Name="FK_Orders_Patients" Association="LaboratoryModel.FK_Orders_Patients">
+      <End Role="Patients" EntitySet="Patients" />
+      <End Role="Orders" EntitySet="Orders" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Orders">
+    <Key>
+      <PropertyRef Name="Order_id" />
+    </Key>
+    <Property Name="Order_id" Type="Int32" Nullable="false" />
+    <Property Name="Create_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Complete_time_in_days" Type="Int32" Nullable="false" />
+    <Property Name="Patient_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Patients" Relationship="LaboratoryModel.FK_Orders_Patients" FromRole="Orders" ToRole="Patients" />
+  </EntityType>
+  <Association Name="FK_Orders_Patients">
+    <End Type="LaboratoryModel.Patients" Role="Patients" Multiplicity="1" />
+    <End Type="LaboratoryModel.Orders" Role="Orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patients">
+        <PropertyRef Name="Patient_id" />
+      </Principal>
+      <Dependent Role="Orders">
+        <PropertyRef Name="Patient_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

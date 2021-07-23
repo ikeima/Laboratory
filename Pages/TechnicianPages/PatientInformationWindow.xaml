@@ -1,0 +1,123 @@
+﻿<Window x:Class="Laboratory.Pages.TechnicianPages.PatientInformationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Laboratory.Pages.TechnicianPages"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="PatientInformationWindow" Height="700" Width="600">
+    <Window.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="Width" Value="300"/>
+            <Setter Property="TextAlignment" Value="Right"/>
+            <Setter Property="FontFamily" Value="Trebuchet MS"/>
+            <Setter Property="FontSize" Value="20"/>
+           
+        </Style>
+    </Window.Resources>
+
+    <Grid Background="White" >
+        <TextBlock VerticalAlignment="Top" HorizontalAlignment="Center" 
+                   TextAlignment="Center" FontSize="25" Width="auto"
+                   Margin="0,10">
+            Информация о пациенте
+        </TextBlock>
+
+        <StackPanel  Name="patientData" Margin="0,20,0,0" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <StackPanel  Orientation="Horizontal">
+                <TextBlock Margin="0,0,10,0">
+                    Фамилия:
+                </TextBlock>
+
+                <TextBlock TextDecorations="Underline" TextAlignment="Left" Text="{Binding Path=Last_name}" Name="lastNameTextBlock" Width="200" Height="30">
+
+                </TextBlock>
+            </StackPanel>
+
+            <StackPanel Margin="0,10" Orientation="Horizontal">
+                <TextBlock Margin="0,0,10,0">
+                    Имя:
+                </TextBlock>
+
+                <TextBlock TextDecorations="Underline" TextAlignment="Left" Text="{Binding Path=First_name}" Name="firstNameTextBlock" Width="200" Height="30">
+
+                </TextBlock>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Margin="0,0,10,0">
+                    Отчество:
+                </TextBlock>
+
+                <TextBlock TextDecorations="Underline" TextAlignment="Left" Text="{Binding Path=Patronymic}" Name="patronymicNameTextBlock" Width="200" Height="30">
+
+                </TextBlock>
+            </StackPanel>
+
+            <StackPanel Margin="0,10,0,0"   Orientation="Horizontal">
+                <TextBlock Margin="0,0,10,0">
+                    Серия и номер паспорта:
+                </TextBlock>
+
+                <TextBlock TextDecorations="Underline" TextAlignment="Left" Text="{Binding Path=Passport_number_series}" Name="passportTextBlock"  Width="200" Height="30">
+
+                </TextBlock>
+            </StackPanel>
+
+            <StackPanel Margin="0,10" Orientation="Horizontal">
+                <TextBlock Margin="0,0,10,0">
+                    Email:
+                </TextBlock>
+
+                <TextBlock TextDecorations="Underline" TextAlignment="Left" Text="{Binding Path=Email}" Name="emailTextBlock" Width="200" Height="30">
+
+                </TextBlock>
+            </StackPanel>
+
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Margin="0,0,10,0">
+                    Телефон:
+                </TextBlock>
+
+                <TextBlock TextDecorations="Underline" TextAlignment="Left" Text="{Binding Path=Phone}" Name="phoneTextBlock" Width="200" Height="30">
+
+                </TextBlock>
+            </StackPanel>
+
+            <StackPanel Margin="0,10"  Orientation="Horizontal">
+                <TextBlock Margin="0,0,10,0">
+                    День рождения:
+                </TextBlock>
+
+                <DatePicker SelectedDate="{Binding Path=Birth_date}" FontFamily="Trebuchet MS" Name="birthDatePicker" FontSize="17" Width="200" Height="30">
+
+                </DatePicker>
+            </StackPanel>
+
+            <StackPanel Margin="0,0,0,0"  Orientation="Horizontal">
+                <TextBlock Margin="0,0,10,0">
+                    Номер страхового полиса:
+                </TextBlock>
+
+                <TextBlock TextDecorations="Underline" TextAlignment="Left" Text="{Binding Path=Insurance_policy_number}" Name="insuranceTextBlock"  Width="200" Height="30">
+
+                </TextBlock>
+            </StackPanel>
+
+            <StackPanel Margin="0,10"  Orientation="Horizontal">
+                <TextBlock VerticalAlignment="Center" Margin="0,0,10,0">
+                    Название страховой компании:
+                </TextBlock>
+
+
+                <TextBlock TextDecorations="Underline" TextAlignment="Left" Name="companieTextBlock" Width="200" Height="30" Text="{Binding Path=Title}"/>
+            </StackPanel>
+
+            <Button Click="Close" FontSize="15" Margin="0,50,0,0" Width="150" Height="30">
+                Закрыть окно
+            </Button>
+        </StackPanel>
+    </Grid>
+</Window>

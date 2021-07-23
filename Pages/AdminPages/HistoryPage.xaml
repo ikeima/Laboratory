@@ -1,0 +1,36 @@
+﻿<Page x:Class="Laboratory.Pages.AdminPages.HistoryPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Laboratory.Pages.AdminPages"
+      mc:Ignorable="d" 
+      d:DesignHeight="500" d:DesignWidth="1100"
+      Title="HistoryPage">
+
+    <Grid Background="White">
+        <StackPanel>
+            <StackPanel Margin="0,30" Orientation="Horizontal">
+                <TextBlock   TextAlignment="Right" Width="300"  FontSize="20" Text="Фильтрация по логину: "/>
+                <ComboBox  Height="30" SelectionChanged="Filtration" Name="loginComboBox"   Width="150">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock FontSize="15" FontFamily="Trebuchet MS" Text="{Binding Path=Login}"/>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+
+                <Button Click="ResetFiltration" Margin="10,0" Width="30" Height="30">
+                    <Image Source="/Resources/refreshIcon.png"/>
+                </Button>
+            </StackPanel>
+        </StackPanel>
+        
+        <DataGrid FontSize="20" Height="400" VerticalAlignment="Bottom" IsReadOnly="True" AutoGenerateColumns="False" Name="historyDataGrid">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Логин пользователя" Binding="{Binding Path=Users.Login}"/>
+                <DataGridTextColumn Header="Время" Binding="{Binding Path=Enter_date_time}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>

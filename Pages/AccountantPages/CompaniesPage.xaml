@@ -1,0 +1,53 @@
+﻿<Page x:Class="Laboratory.Pages.AccountantPages.CompaniesPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Laboratory.Pages.AccountantPages"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="1100"
+      Title="Страховые компании">
+
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="6*"/>
+        </Grid.RowDefinitions>
+        <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+            <TextBlock Margin="100,0,5,0" VerticalAlignment="Center" FontSize="15">
+                 Поиск:
+            </TextBlock>
+
+            <Border BorderBrush="Gray" BorderThickness="1">
+                <TextBox BorderThickness="0" TextChanged="Search" FontSize="15" Opacity="0.3" VerticalContentAlignment="Center"  Width="200" Name="searchBox">
+                    <TextBox.ToolTip>
+                        <ToolTip>
+                            Поиск по всем атрибутам
+                        </ToolTip>
+                    </TextBox.ToolTip>
+                </TextBox>
+
+            </Border>
+        </StackPanel>
+
+        <ListView Grid.Row="1" FontFamily="Trebuchet MS" FontSize="15" Name="companiesList" Height="400" VerticalAlignment="Top" >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Margin="0,0,10,0" Width="70" Source="/Resources/companieIcon.png" />
+
+                        <StackPanel Width="600">
+                            <TextBlock Text="{Binding Path=Title}"/>
+                            <TextBlock Text="{Binding StringFormat=Расчётный счёт: {0}, Path=Settlement_account}" />
+                            <TextBlock Text="{Binding StringFormat=БИК: {0},Path=BIC}"/>
+                            <TextBlock Text="{Binding StringFormat=ИНН: {0}, Path=TIN}"/>
+                            <TextBlock Text="{Binding StringFormat=Адрес: {0}, Path=Adress}"/>
+                        </StackPanel>
+
+
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid> 
+</Page>

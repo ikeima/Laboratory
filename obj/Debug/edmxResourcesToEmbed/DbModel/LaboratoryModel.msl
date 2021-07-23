@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище LaboratoryModelContainer" CdmEntityContainer="LaboratoryEntities">
+    <EntitySetMapping Name="Accountants">
+      <EntityTypeMapping TypeName="LaboratoryModel.Accountants">
+        <MappingFragment StoreEntitySet="Accountants">
+          <ScalarProperty Name="Accountant_id" ColumnName="Accountant_id" />
+          <ScalarProperty Name="User_id" ColumnName="User_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Accounts">
+      <EntityTypeMapping TypeName="LaboratoryModel.Accounts">
+        <MappingFragment StoreEntitySet="Accounts">
+          <ScalarProperty Name="Account_id" ColumnName="Account_id" />
+          <ScalarProperty Name="Accountant_id" ColumnName="Accountant_id" />
+          <ScalarProperty Name="Insurance_company_id" ColumnName="Insurance_company_id" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Analyzers">
+      <EntityTypeMapping TypeName="LaboratoryModel.Analyzers">
+        <MappingFragment StoreEntitySet="Analyzers">
+          <ScalarProperty Name="Analyzer_id" ColumnName="Analyzer_id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Analyzers_data">
+      <EntityTypeMapping TypeName="LaboratoryModel.Analyzers_data">
+        <MappingFragment StoreEntitySet="Analyzers_data">
+          <ScalarProperty Name="Data_id" ColumnName="Data_id" />
+          <ScalarProperty Name="Entrance_date_time" ColumnName="Entrance_date_time" />
+          <ScalarProperty Name="Complete_time_in_sec" ColumnName="Complete_time_in_sec" />
+          <ScalarProperty Name="Analyzer_id" ColumnName="Analyzer_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Completed_service">
+      <EntityTypeMapping TypeName="LaboratoryModel.Completed_service">
+        <MappingFragment StoreEntitySet="Completed_service">
+          <ScalarProperty Name="Completed_service_id" ColumnName="Completed_service_id" />
+          <ScalarProperty Name="Service_code" ColumnName="Service_code" />
+          <ScalarProperty Name="Complete_date" ColumnName="Complete_date" />
+          <ScalarProperty Name="Technician_id" ColumnName="Technician_id" />
+          <ScalarProperty Name="Analyzer_id" ColumnName="Analyzer_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="History">
+      <EntityTypeMapping TypeName="LaboratoryModel.History">
+        <MappingFragment StoreEntitySet="History">
+          <ScalarProperty Name="History_id" ColumnName="History_id" />
+          <ScalarProperty Name="User_id" ColumnName="User_id" />
+          <ScalarProperty Name="Enter_date_time" ColumnName="Enter_date_time" />
+          <ScalarProperty Name="Logout_date_time" ColumnName="Logout_date_time" />
+          <ScalarProperty Name="Is_succes" ColumnName="Is_succes" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Insurance_companies">
+      <EntityTypeMapping TypeName="LaboratoryModel.Insurance_companies">
+        <MappingFragment StoreEntitySet="Insurance_companies">
+          <ScalarProperty Name="Insurance_company_id" ColumnName="Insurance_company_id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Adress" ColumnName="Adress" />
+          <ScalarProperty Name="TIN" ColumnName="TIN" />
+          <ScalarProperty Name="Settlement_account" ColumnName="Settlement_account" />
+          <ScalarProperty Name="BIC" ColumnName="BIC" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Patients">
+      <EntityTypeMapping TypeName="LaboratoryModel.Patients">
+        <MappingFragment StoreEntitySet="Patients">
+          <ScalarProperty Name="Patient_id" ColumnName="Patient_id" />
+          <ScalarProperty Name="Birth_date" ColumnName="Birth_date" />
+          <ScalarProperty Name="Passport_number_series" ColumnName="Passport_number_series" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Insurance_policy_number" ColumnName="Insurance_policy_number" />
+          <ScalarProperty Name="Insurance_policy_type" ColumnName="Insurance_policy_type" />
+          <ScalarProperty Name="Insurance_company_id" ColumnName="Insurance_company_id" />
+          <ScalarProperty Name="First_name" ColumnName="First_name" />
+          <ScalarProperty Name="Last_name" ColumnName="Last_name" />
+          <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Patients_services">
+      <EntityTypeMapping TypeName="LaboratoryModel.Patients_services">
+        <MappingFragment StoreEntitySet="Patients_services">
+          <ScalarProperty Name="Service_code" ColumnName="Service_code" />
+          <ScalarProperty Name="Patient_id" ColumnName="Patient_id" />
+          <ScalarProperty Name="Patients_services_id" ColumnName="Patients_services_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="LaboratoryModel.Roles">
+        <MappingFragment StoreEntitySet="Roles">
+          <ScalarProperty Name="Role_code" ColumnName="Role_code" />
+          <ScalarProperty Name="Role_name" ColumnName="Role_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Services">
+      <EntityTypeMapping TypeName="LaboratoryModel.Services">
+        <MappingFragment StoreEntitySet="Services">
+          <ScalarProperty Name="Service_code" ColumnName="Service_code" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Cost" ColumnName="Cost" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="LaboratoryModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Technicians">
+      <EntityTypeMapping TypeName="LaboratoryModel.Technicians">
+        <MappingFragment StoreEntitySet="Technicians">
+          <ScalarProperty Name="Technician_id" ColumnName="Technician_id" />
+          <ScalarProperty Name="User_id" ColumnName="User_id" />
+          <ScalarProperty Name="Service_code" ColumnName="Service_code" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="LaboratoryModel.Users">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="User_id" ColumnName="User_id" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="First_name" ColumnName="First_name" />
+          <ScalarProperty Name="Last_name" ColumnName="Last_name" />
+          <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+          <ScalarProperty Name="Role_code" ColumnName="Role_code" />
+          <ScalarProperty Name="Last_enter_date_time" ColumnName="Last_enter_date_time" />
+          <ScalarProperty Name="Last_logout_date_time" ColumnName="Last_logout_date_time" />
+          <ScalarProperty Name="IP" ColumnName="IP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="LaboratoryModel.Orders">
+        <MappingFragment StoreEntitySet="Orders">
+          <ScalarProperty Name="Patient_id" ColumnName="Patient_id" />
+          <ScalarProperty Name="Complete_time_in_days" ColumnName="Complete_time_in_days" />
+          <ScalarProperty Name="Create_date" ColumnName="Create_date" />
+          <ScalarProperty Name="Order_id" ColumnName="Order_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

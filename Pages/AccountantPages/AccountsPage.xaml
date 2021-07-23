@@ -1,0 +1,103 @@
+﻿<Page x:Class="Laboratory.Pages.AccountantPages.AccountsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Laboratory.Pages.AccountantPages"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="1100"
+      Title="AccountsPage">
+
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="6*"/>
+        </Grid.RowDefinitions>
+        <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+            <TextBlock Margin="100,0,5,0" VerticalAlignment="Center" FontSize="15">
+                 Поиск:
+            </TextBlock>
+
+            <Border BorderBrush="Gray" BorderThickness="1">
+                <TextBox TextChanged="Search" BorderThickness="0" FontSize="15" Opacity="0.3" VerticalContentAlignment="Center"  Width="200" Name="searchBox">
+                    <TextBox.ToolTip>
+                        <ToolTip>
+                            Поиск по номеру счёта
+                        </ToolTip>
+                    </TextBox.ToolTip>
+                </TextBox>
+
+            </Border>
+        </StackPanel>
+
+        <StackPanel  Name="panel" Margin="0, 0,-170,0" VerticalAlignment="Center" HorizontalAlignment="Right">
+            <StackPanel VerticalAlignment="Center" Orientation="Horizontal"  >
+                <Button Name="menuButton" Click="SlideMenu" Width="15" Height="50">
+                    ←
+                </Button>
+
+                <Button Margin="0,0,0,0" Click="OpenAddAccountWindow" Width="50" Height="50" >
+                    <Button.ToolTip>
+                        <ToolTip>
+                            <TextBlock>
+                                Выставить новый счёт
+                            </TextBlock>
+                        </ToolTip>
+                    </Button.ToolTip>
+
+                    <Image Source="/Resources/addAccountIcon.png"/>
+                </Button>
+
+                <Button Margin="10,0" Click="PersonalDataProccesingWindowOpen" Width="50" Height="50" >
+                    <Button.ToolTip>
+                        <ToolTip>
+                            <TextBlock>
+                                Создать согласие на обработку персональных данных
+                            </TextBlock>
+                        </ToolTip>
+                    </Button.ToolTip>
+
+                    <Image Source="/Resources/personalDataIcon.png"/>
+                </Button>
+
+
+                <Button Click="DeleteAccount" Width="50" Height="50" Margin="0,0,0,0">
+                    <Button.ToolTip>
+                        <ToolTip>
+                            <TextBlock>
+                                Удалить счёт
+                            </TextBlock>
+                        </ToolTip>
+                    </Button.ToolTip>
+
+                    <Image Width="40" Height="40" Source="/Resources/deleteIcon.png"/>
+                </Button>
+
+
+            </StackPanel>
+        </StackPanel>
+
+
+
+        <ListView Grid.Row="1" FontFamily="Trebuchet MS" FontSize="15" Name="accountsList" Height="400" VerticalAlignment="Top" >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Width="70" Source="/Resources/patientIcon.png" />
+
+                        <StackPanel Width="600">
+                            <TextBlock Text="{Binding StringFormat=Номер счёта: {0}, Path=Number}" />
+                            <TextBlock Text="{Binding StringFormat=Название страховой компании: {0},Path=Insurance_companies.Title}"/>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding StringFormat=Бухгалтер: {0}, Path=Accountants.Users.Last_name}" Margin="0,0,5,0"/>
+                                <TextBlock Text="{Binding Path=Accountants.Users.First_name}"/>
+                            </StackPanel>
+                        </StackPanel>
+
+
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Page>

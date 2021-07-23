@@ -1,0 +1,44 @@
+﻿<Window x:Class="Laboratory.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Laboratory"
+        mc:Ignorable="d"
+        Icon="Resources/mainIcon.png"
+        WindowStartupLocation="CenterScreen" 
+        Title="Лаборатория" Height="750" Width="1100">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="8*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Margin="10"  Panel.ZIndex="1" Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Right" Orientation="Horizontal" Name="currentUserData">
+            <TextBlock Name="lastName" VerticalAlignment="Center" FontSize="15" Margin="10,0"/>
+            <TextBlock Name="firstName" VerticalAlignment="Center"  FontSize="15" Margin="0,0,0,0" />
+            <TextBlock Name="roleTextBlock"  VerticalAlignment="Center"  FontSize="15"/>
+        </StackPanel>
+
+        <Rectangle Fill="LightGreen"/>
+
+        <TextBlock FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Trebuchet MS">
+            Лаборатория № 17
+        </TextBlock>
+
+        <Frame  ContentRendered="FrameContentRender" NavigationUIVisibility="Hidden"  Name="frame" Grid.Row="1" Source="Pages/AutorisationPage.xaml">
+            
+        </Frame>
+
+        <Button Name="backButton" Click="GoToPreviousPage" HorizontalAlignment="Left" Margin="50,0" FontSize="15" Grid.Row="2" Width="100" Height="30" Panel.ZIndex="1">
+            Назад
+        </Button>
+
+        <Button Name="logoutButton" Click="Logout" HorizontalAlignment="Center" Margin="0,0" FontSize="15" Grid.Row="2" Width="150" Height="30" Panel.ZIndex="1">
+            Выйти из системы
+        </Button>
+
+        <Rectangle Fill="LightGreen" Grid.Row="2"/>
+    </Grid>
+</Window>

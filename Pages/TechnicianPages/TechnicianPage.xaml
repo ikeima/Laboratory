@@ -1,0 +1,35 @@
+﻿<Page x:Class="Laboratory.Pages.LaborantsPages.TechnicianPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Laboratory"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="1100"
+      Title="LaborantPage">
+
+    <Grid Background="White">
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button Click="OpenBiomaterialAddPage" FontSize="15"  Width="200" Height="40">
+                <StackPanel  Orientation="Horizontal">
+                    <Image Source="/Resources/biomaterialIcon.png"/>
+                    <TextBlock TextAlignment="Left" Width="150" VerticalAlignment="Center" Text="Приём биоматериала"/>
+                </StackPanel>
+            </Button>
+
+            <Button Click="OpenPatientsListPage" Margin="0,10" FontSize="15" Width="200" Height="40">
+                <StackPanel  Orientation="Horizontal">
+                    <Image Source="/Resources/patientIcon.png"/>
+                    <TextBlock TextAlignment="Left" Width="150" VerticalAlignment="Center" Text="Список пациентов"/>
+                </StackPanel>
+            </Button>
+            
+            <Button Click="OpenServicesPage" FontSize="15" Width="200" Height="40">
+                <StackPanel  Orientation="Horizontal">
+                    <Image Source="/Resources/serviceIcon.png"/>
+                    <TextBlock TextAlignment="Left" Width="150" VerticalAlignment="Center" Text="Список услуг"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+    </Grid>
+</Page>

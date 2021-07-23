@@ -1,0 +1,388 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище LaboratoryModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Accountants">
+    <Key>
+      <PropertyRef Name="Accountant_id" />
+    </Key>
+    <Property Name="Accountant_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="User_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Accounts">
+    <Key>
+      <PropertyRef Name="Account_id" />
+    </Key>
+    <Property Name="Account_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Accountant_id" Type="int" />
+    <Property Name="Insurance_company_id" Type="int" />
+    <Property Name="Number" Type="nvarchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Analyzers">
+    <Key>
+      <PropertyRef Name="Analyzer_id" />
+    </Key>
+    <Property Name="Analyzer_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Analyzers_data">
+    <Key>
+      <PropertyRef Name="Data_id" />
+    </Key>
+    <Property Name="Data_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Entrance_date_time" Type="datetime" />
+    <Property Name="Complete_time_in_sec" Type="int" />
+    <Property Name="Analyzer_id" Type="int" />
+  </EntityType>
+  <EntityType Name="Completed_service">
+    <Key>
+      <PropertyRef Name="Completed_service_id" />
+    </Key>
+    <Property Name="Completed_service_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Service_code" Type="int" Nullable="false" />
+    <Property Name="Complete_date" Type="datetime" Nullable="false" />
+    <Property Name="Technician_id" Type="int" Nullable="false" />
+    <Property Name="Analyzer_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="History">
+    <Key>
+      <PropertyRef Name="History_id" />
+    </Key>
+    <Property Name="History_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="User_id" Type="int" Nullable="false" />
+    <Property Name="Enter_date_time" Type="datetime" />
+    <Property Name="Logout_date_time" Type="datetime" />
+    <Property Name="Is_succes" Type="bit" />
+  </EntityType>
+  <EntityType Name="Insurance_companies">
+    <Key>
+      <PropertyRef Name="Insurance_company_id" />
+    </Key>
+    <Property Name="Insurance_company_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Adress" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="TIN" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Settlement_account" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="BIC" Type="varchar" MaxLength="9" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Orders">
+    <Key>
+      <PropertyRef Name="Order_id" />
+    </Key>
+    <Property Name="Order_id" Type="int" Nullable="false" />
+    <Property Name="Create_date" Type="datetime" Nullable="false" />
+    <Property Name="Complete_time_in_days" Type="int" Nullable="false" />
+    <Property Name="Patient_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Patients">
+    <Key>
+      <PropertyRef Name="Patient_id" />
+    </Key>
+    <Property Name="Patient_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Birth_date" Type="datetime" Nullable="false" />
+    <Property Name="Passport_number_series" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Phone" Type="varchar" MaxLength="12" />
+    <Property Name="Email" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="Insurance_policy_number" Type="varchar" MaxLength="16" Nullable="false" />
+    <Property Name="Insurance_policy_type" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Insurance_company_id" Type="int" Nullable="false" />
+    <Property Name="First_name" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Last_name" Type="varchar" MaxLength="50" />
+    <Property Name="Patronymic" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Patients_services">
+    <Key>
+      <PropertyRef Name="Patients_services_id" />
+    </Key>
+    <Property Name="Service_code" Type="int" Nullable="false" />
+    <Property Name="Patient_id" Type="int" Nullable="false" />
+    <Property Name="Patients_services_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="Role_code" />
+    </Key>
+    <Property Name="Role_code" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="Role_name" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Services">
+    <Key>
+      <PropertyRef Name="Service_code" />
+    </Key>
+    <Property Name="Service_code" Type="int" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="50" />
+    <Property Name="Cost" Type="money" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Technicians">
+    <Key>
+      <PropertyRef Name="Technician_id" />
+    </Key>
+    <Property Name="Technician_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="User_id" Type="int" Nullable="false" />
+    <Property Name="Service_code" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="User_id" />
+    </Key>
+    <Property Name="User_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Login" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="First_name" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Last_name" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="Patronymic" Type="varchar" MaxLength="30" />
+    <Property Name="Role_code" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="Last_enter_date_time" Type="datetime2" Precision="3" Nullable="false" />
+    <Property Name="Last_logout_date_time" Type="datetime2" Precision="3" Nullable="false" />
+    <Property Name="IP" Type="nvarchar" MaxLength="16" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Accountants_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Accountants" Type="Self.Accountants" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="User_id" />
+      </Principal>
+      <Dependent Role="Accountants">
+        <PropertyRef Name="User_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Accounts_Accountants1">
+    <End Role="Accountants" Type="Self.Accountants" Multiplicity="0..1" />
+    <End Role="Accounts" Type="Self.Accounts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Accountants">
+        <PropertyRef Name="Accountant_id" />
+      </Principal>
+      <Dependent Role="Accounts">
+        <PropertyRef Name="Accountant_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Accounts_Insurance_companies">
+    <End Role="Insurance_companies" Type="Self.Insurance_companies" Multiplicity="0..1" />
+    <End Role="Accounts" Type="Self.Accounts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Insurance_companies">
+        <PropertyRef Name="Insurance_company_id" />
+      </Principal>
+      <Dependent Role="Accounts">
+        <PropertyRef Name="Insurance_company_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Analyzers_data_Analyzers">
+    <End Role="Analyzers" Type="Self.Analyzers" Multiplicity="0..1" />
+    <End Role="Analyzers_data" Type="Self.Analyzers_data" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Analyzers">
+        <PropertyRef Name="Analyzer_id" />
+      </Principal>
+      <Dependent Role="Analyzers_data">
+        <PropertyRef Name="Analyzer_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Completed_service_Analyzers">
+    <End Role="Analyzers" Type="Self.Analyzers" Multiplicity="1" />
+    <End Role="Completed_service" Type="Self.Completed_service" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Analyzers">
+        <PropertyRef Name="Analyzer_id" />
+      </Principal>
+      <Dependent Role="Completed_service">
+        <PropertyRef Name="Analyzer_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Completed_service_Services">
+    <End Role="Services" Type="Self.Services" Multiplicity="1" />
+    <End Role="Completed_service" Type="Self.Completed_service" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Services">
+        <PropertyRef Name="Service_code" />
+      </Principal>
+      <Dependent Role="Completed_service">
+        <PropertyRef Name="Service_code" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_History_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="History" Type="Self.History" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="User_id" />
+      </Principal>
+      <Dependent Role="History">
+        <PropertyRef Name="User_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Orders_Patients">
+    <End Role="Patients" Type="Self.Patients" Multiplicity="1" />
+    <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patients">
+        <PropertyRef Name="Patient_id" />
+      </Principal>
+      <Dependent Role="Orders">
+        <PropertyRef Name="Patient_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Patients_Insurance_companies">
+    <End Role="Insurance_companies" Type="Self.Insurance_companies" Multiplicity="1" />
+    <End Role="Patients" Type="Self.Patients" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Insurance_companies">
+        <PropertyRef Name="Insurance_company_id" />
+      </Principal>
+      <Dependent Role="Patients">
+        <PropertyRef Name="Insurance_company_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Patients_services_Patients">
+    <End Role="Patients" Type="Self.Patients" Multiplicity="1" />
+    <End Role="Patients_services" Type="Self.Patients_services" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patients">
+        <PropertyRef Name="Patient_id" />
+      </Principal>
+      <Dependent Role="Patients_services">
+        <PropertyRef Name="Patient_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Patients_services_Services">
+    <End Role="Services" Type="Self.Services" Multiplicity="1" />
+    <End Role="Patients_services" Type="Self.Patients_services" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Services">
+        <PropertyRef Name="Service_code" />
+      </Principal>
+      <Dependent Role="Patients_services">
+        <PropertyRef Name="Service_code" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Technicians_Services">
+    <End Role="Services" Type="Self.Services" Multiplicity="1" />
+    <End Role="Technicians" Type="Self.Technicians" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Services">
+        <PropertyRef Name="Service_code" />
+      </Principal>
+      <Dependent Role="Technicians">
+        <PropertyRef Name="Service_code" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Technicians_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Technicians" Type="Self.Technicians" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="User_id" />
+      </Principal>
+      <Dependent Role="Technicians">
+        <PropertyRef Name="User_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_Roles">
+    <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+    <End Role="Users" Type="Self.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="Role_code" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="Role_code" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище LaboratoryModelContainer">
+    <EntitySet Name="Accountants" EntityType="Self.Accountants" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Accounts" EntityType="Self.Accounts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Analyzers" EntityType="Self.Analyzers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Analyzers_data" EntityType="Self.Analyzers_data" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Completed_service" EntityType="Self.Completed_service" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="History" EntityType="Self.History" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Insurance_companies" EntityType="Self.Insurance_companies" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Patients" EntityType="Self.Patients" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Patients_services" EntityType="Self.Patients_services" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Services" EntityType="Self.Services" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Technicians" EntityType="Self.Technicians" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Accountants_Users" Association="Self.FK_Accountants_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Accountants" EntitySet="Accountants" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Accounts_Accountants1" Association="Self.FK_Accounts_Accountants1">
+      <End Role="Accountants" EntitySet="Accountants" />
+      <End Role="Accounts" EntitySet="Accounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Accounts_Insurance_companies" Association="Self.FK_Accounts_Insurance_companies">
+      <End Role="Insurance_companies" EntitySet="Insurance_companies" />
+      <End Role="Accounts" EntitySet="Accounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Analyzers_data_Analyzers" Association="Self.FK_Analyzers_data_Analyzers">
+      <End Role="Analyzers" EntitySet="Analyzers" />
+      <End Role="Analyzers_data" EntitySet="Analyzers_data" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Completed_service_Analyzers" Association="Self.FK_Completed_service_Analyzers">
+      <End Role="Analyzers" EntitySet="Analyzers" />
+      <End Role="Completed_service" EntitySet="Completed_service" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Completed_service_Services" Association="Self.FK_Completed_service_Services">
+      <End Role="Services" EntitySet="Services" />
+      <End Role="Completed_service" EntitySet="Completed_service" />
+    </AssociationSet>
+    <AssociationSet Name="FK_History_Users" Association="Self.FK_History_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="History" EntitySet="History" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Orders_Patients" Association="Self.FK_Orders_Patients">
+      <End Role="Patients" EntitySet="Patients" />
+      <End Role="Orders" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Patients_Insurance_companies" Association="Self.FK_Patients_Insurance_companies">
+      <End Role="Insurance_companies" EntitySet="Insurance_companies" />
+      <End Role="Patients" EntitySet="Patients" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Patients_services_Patients" Association="Self.FK_Patients_services_Patients">
+      <End Role="Patients" EntitySet="Patients" />
+      <End Role="Patients_services" EntitySet="Patients_services" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Patients_services_Services" Association="Self.FK_Patients_services_Services">
+      <End Role="Services" EntitySet="Services" />
+      <End Role="Patients_services" EntitySet="Patients_services" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Technicians_Services" Association="Self.FK_Technicians_Services">
+      <End Role="Services" EntitySet="Services" />
+      <End Role="Technicians" EntitySet="Technicians" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Technicians_Users" Association="Self.FK_Technicians_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Technicians" EntitySet="Technicians" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_Roles" Association="Self.FK_Users_Roles">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

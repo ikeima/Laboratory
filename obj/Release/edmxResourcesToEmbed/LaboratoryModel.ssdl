@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище LaboratoryModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="Role_code" />
+    </Key>
+    <Property Name="Role_code" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="Role_name" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="User_id" />
+    </Key>
+    <Property Name="User_id" Type="int" Nullable="false" />
+    <Property Name="Login" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="First_name" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Last_name" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="Patronymic" Type="varchar" MaxLength="30" />
+    <Property Name="Role_code" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="Last_enter_date_time" Type="datetime2" Precision="3" Nullable="false" />
+    <Property Name="Last_logout_date_time" Type="datetime2" Precision="3" Nullable="false" />
+    <Property Name="IP" Type="nvarchar" MaxLength="16" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="Хранилище LaboratoryModelContainer">
+    <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

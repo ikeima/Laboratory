@@ -1,0 +1,116 @@
+﻿<Page x:Class="Laboratory.Pages.TechnicianPages.PatientsListPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Laboratory.Pages.TechnicianPages"
+      mc:Ignorable="d" 
+      d:DesignHeight="520" d:DesignWidth="1100"
+      Title="PatientsListPage">
+
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="6*"/>
+        </Grid.RowDefinitions>
+        <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+            <TextBlock Margin="100,0,5,0" VerticalAlignment="Center" FontSize="15">
+                 Поиск: 
+            </TextBlock>
+
+            <Border BorderBrush="Gray" BorderThickness="1">
+                <TextBox BorderThickness="0" FontSize="15" Opacity="0.3" VerticalContentAlignment="Center" TextChanged="Search" Width="200" Name="searchBox">
+                    <TextBox.ToolTip>
+                        <ToolTip>
+                            Поиск по всем атрибутам
+                        </ToolTip>
+                    </TextBox.ToolTip>
+                </TextBox>
+                
+            </Border>
+        </StackPanel>
+        
+        <StackPanel  Name="panel" Margin="0, 0,-228,0" VerticalAlignment="Center" HorizontalAlignment="Right">
+            <StackPanel VerticalAlignment="Center" Orientation="Horizontal"  >
+                <Button Name="menuButton" Click="SlideMenu" Width="15" Height="50">
+                    ←
+                </Button>
+
+                <Button Click="OpenAddPatientPage" Width="50" Height="50" >
+                    <Button.ToolTip>
+                        <ToolTip>
+                            <TextBlock>
+                                Регистрация нового паицента
+                            </TextBlock>
+                        </ToolTip>
+                    </Button.ToolTip>
+                    
+                    <Image Source="/Resources/patientAddIcon.png"/>
+                </Button>
+
+                <Button Click="OpenEditPatientPage" Margin="10,0" Width="50" Height="50">
+                    <Button.ToolTip>
+                        <ToolTip>
+                            <TextBlock>
+                                Изменить информацию о пациенте
+                            </TextBlock>
+                        </ToolTip>
+                    </Button.ToolTip>
+                    <Image Width="40" Height="40" Source="/Resources/editPatientIcon.png"/>
+                </Button>
+
+                <Button Click="DetailInformationOpen" Width="50" Height="50" Margin="0,0,10,0">
+                    <Button.ToolTip>
+                        <ToolTip>
+                            <TextBlock>
+                                Открыть подробную информацию о пациенте
+                            </TextBlock>
+                        </ToolTip>
+                    </Button.ToolTip>
+
+                    <Image Width="40" Height="40" Source="/Resources/informationIcon.png"/>
+                </Button>
+
+                <Button Click="DeletePatient" Width="50" Height="50" Margin="0,0,0,0">
+                    <Button.ToolTip>
+                        <ToolTip>
+                            <TextBlock>
+                                Удалить пациента
+                            </TextBlock>
+                        </ToolTip>
+                    </Button.ToolTip>
+                    
+                    <Image Width="40" Height="40" Source="/Resources/deleteIcon.png"/>
+                </Button>
+
+              
+            </StackPanel>
+        </StackPanel>
+       
+        
+        
+        <ListView Grid.Row="1" FontFamily="Trebuchet MS" FontSize="15" Name="patientsList" Height="400" VerticalAlignment="Top" >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Width="70" Source="/Resources/patientIcon.png" />
+
+                        <StackPanel Width="600">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Path=Last_name}"/>
+                                <TextBlock Margin="5,0" Text="{Binding Path=First_name}"/>
+                                <TextBlock Text="{Binding Path=Patronymic}"/>
+                            </StackPanel>
+
+                            <TextBlock Text="{Binding StringFormat=Серия и номер пасспорта: {0}, Path=Passport_number_series}" />
+                            <TextBlock Text="{Binding StringFormat=Дата рождения: {0},Path=Birth_date}"/>
+                            <TextBlock Text="{Binding StringFormat=Страховая компания: {0}, Path=Insurance_companies.Title}"/>
+                        </StackPanel>
+
+                        
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Page>

@@ -1,0 +1,67 @@
+﻿<Window x:Class="Laboratory.Pages.AccountantPages.PersonalDataProcessingWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Laboratory.Pages.AccountantPages"
+        mc:Ignorable="d"
+        MinHeight="300" MinWidth="60"
+        WindowStartupLocation="CenterScreen"
+        Title="Новое согласие на обработку данных" Height="350" Width="600">
+    <Window.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="TextAlignment" Value="Right"/>
+            <Setter Property="FontFamily" Value="Trebuchet MS"/>
+            <Setter Property="FontSize" Value="20"/>
+        </Style>
+    </Window.Resources>
+    
+    <Grid>
+        <TextBlock Margin="0,20" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="20" Width="500" TextWrapping="Wrap" TextAlignment="Center">
+            Создание документа согласия на обработку персональных данных 
+        </TextBlock>
+
+        <StackPanel Margin="0,20,0,0" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                <TextBlock VerticalAlignment="Center">
+                    Включить данные пациента:
+                </TextBlock>
+
+                <CheckBox Checked="ShowPatientPanel" Unchecked="HidePatientPanel" Name="patientDataCheckBox" Margin="10,0,0,0" VerticalAlignment="Center"/>
+            </StackPanel>
+
+
+            <StackPanel Name="choosePatientPanel" Visibility="Hidden" Margin="0,10"  Orientation="Horizontal">
+                
+                
+                <TextBlock Margin="0,0,10,0">
+                    Выберите пациента:
+                </TextBlock>
+
+                <ComboBox FontSize="15" Name="patientsComboBox" Width="200" Height="30">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Path=Last_name}"/>
+                                <TextBlock Margin="5,0" Text="{Binding Path=First_name}"/>
+                                <TextBlock Text="{Binding Path=Patronymic}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+            </StackPanel>
+
+
+      
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="0,30,0,0">
+                <Button FontSize="15" Click="CreatePDF"  Width="100" Height="30">
+                    Создать
+                </Button>
+
+                <Button FontSize="15" Click="CancelAndClose" Margin="10,0"  Width="100" Height="30">
+                    Отмена
+                </Button>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

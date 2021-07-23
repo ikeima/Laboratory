@@ -1,0 +1,62 @@
+﻿<Page x:Class="Laboratory.Pages.TechnicianPages.ServicesPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Laboratory.Pages.TechnicianPages"
+      mc:Ignorable="d" 
+      d:DesignHeight="520" d:DesignWidth="1100"
+      Title="Услуги">
+
+    <Grid Background="White">
+        <StackPanel  Grid.Row="1"  HorizontalAlignment="Center"  VerticalAlignment="Center">
+            <StackPanel Margin="0,0,0,10" Orientation="Horizontal">
+                <TextBlock Width="250" TextAlignment="Right" VerticalAlignment="Center" Margin="10,0" FontSize="20">
+                    Поиск услуг:
+                </TextBlock>
+
+                <TextBox  Name="searchBox" TextChanged="Search" VerticalContentAlignment="Center" FontSize="20" Width="170">
+                    <TextBox.ToolTip>
+                        <TextBlock>
+                            Поиск по коду или названию
+                        </TextBlock>
+                    </TextBox.ToolTip>
+                </TextBox>
+            </StackPanel>
+            
+            <StackPanel Margin="0,0,0,30" Orientation="Horizontal">
+                <TextBlock Width="250" VerticalAlignment="Center" Margin="10,0" FontSize="20">
+                    Сортировка стоимости по:
+                </TextBlock>
+                <ComboBox Name="sortComboBox" SelectionChanged="SortingByCost" VerticalContentAlignment="Center" FontSize="20" Width="170">
+                    <ComboBoxItem>
+                        Возрастанию
+                    </ComboBoxItem>
+                    <ComboBoxItem>
+                        Убыванию
+                    </ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+
+            <ListView  Name="servicesList" FontSize="20" Width="800" Height="300" >
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="BorderThickness" Value="1"/>
+                        <Setter Property="BorderBrush" Value="Black"/>
+                        <Setter Property="Margin" Value="0,0,0,5"/>
+                    </Style>
+                </ListView.ItemContainerStyle>
+                
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel >
+                            <TextBlock Text="{Binding StringFormat=Код услуги: {0}, Path=Service_code}"/>
+                            <TextBlock Text="{Binding StringFormat=Название: {0}, Path=Title}"/>
+                            <TextBlock Text="{Binding StringFormat=Стоимость: {0:C}, ConverterCulture=ru, Path=Cost}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
+    </Grid>
+</Page>

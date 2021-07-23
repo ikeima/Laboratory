@@ -1,0 +1,34 @@
+﻿<Page x:Class="Laboratory.Pages.TechnicianPages.BarcodePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Laboratory.Pages.TechnicianPages"
+      mc:Ignorable="d" 
+      d:DesignHeight="520" d:DesignWidth="1100"
+      Title="BarcodePage">
+
+    <Grid Background="White">
+        <TextBlock HorizontalAlignment="Center" FontSize="30" 
+                   Margin="0,50">
+                Формирование заказа
+        </TextBlock>
+
+
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Margin="0,0,10,0" FontSize="15">
+                    Введите код с листа сопровождения:
+                </TextBlock>
+
+                <TextBox Name="barcodeBox" Width="200" FontSize="15" >
+                    
+                </TextBox>
+            </StackPanel>
+
+            <Button Click="OrderConfirmationPageOpen" Margin="0,20,0,0" FontSize="15" Width="100" Height="25">
+                Далее                
+            </Button>
+        </StackPanel>
+    </Grid>
+</Page>

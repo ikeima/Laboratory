@@ -1,0 +1,28 @@
+﻿<Page x:Class="Laboratory.Pages.AccountantPages.AccountantPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Laboratory.Pages.AccountantPages"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="1100"
+      Title="AccountantPage">
+
+    <Grid Background="White">
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Button Click="OpenAccountsPage" FontSize="15"  Width="250" Height="40">
+                <StackPanel  Orientation="Horizontal">
+                    <Image  Margin="0,0,5,0" Width="30" Source="/Resources/accountIcon.png"/>
+                    <TextBlock TextAlignment="Left" Width="200" VerticalAlignment="Center" Text="Счета"/>
+                </StackPanel>
+            </Button>
+                       
+            <Button Margin="0,10,0,0" Click="OpenCompaniesPage" FontSize="15"  Width="250" Height="40">
+                <StackPanel  Orientation="Horizontal">
+                    <Image  Margin="0,0,5,0" Source="/Resources/insuranceCompaniesIcon.png"/>
+                    <TextBlock TextAlignment="Left" Width="200" VerticalAlignment="Center" Text="Список страховых компаний"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+    </Grid>
+</Page>

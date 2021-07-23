@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище LaboratoryModelContainer" CdmEntityContainer="LaboratoryEntities">
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="LaboratoryModel.Roles">
+        <MappingFragment StoreEntitySet="Roles">
+          <ScalarProperty Name="Role_code" ColumnName="Role_code" />
+          <ScalarProperty Name="Role_name" ColumnName="Role_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="LaboratoryModel.Users">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="User_id" ColumnName="User_id" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="First_name" ColumnName="First_name" />
+          <ScalarProperty Name="Last_name" ColumnName="Last_name" />
+          <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+          <ScalarProperty Name="Role_code" ColumnName="Role_code" />
+          <ScalarProperty Name="Last_enter_date_time" ColumnName="Last_enter_date_time" />
+          <ScalarProperty Name="Last_logout_date_time" ColumnName="Last_logout_date_time" />
+          <ScalarProperty Name="IP" ColumnName="IP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
