@@ -114,14 +114,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Laboratory.exe" size="2852832">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Laboratory.exe" size="2851328">
       <assemblyIdentity name="Laboratory" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>2x+R8+TJQ0ANPT3XSKJgnOKMqfXyFRF3T1pkr7/wMtM=</dsig:DigestValue>
+        <dsig:DigestValue>Tp60GT8kr61LzeRz8cXSQNm8bnYc9z2Z+eTXJ4GEgNk=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

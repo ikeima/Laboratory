@@ -5,6 +5,7 @@ using System.IO;
 using System.Net;
 using System.Text;
 using System.Windows;
+using static Laboratory.Classes.Constants;
 
 namespace Laboratory.Classes
 {
@@ -14,7 +15,7 @@ namespace Laboratory.Classes
         {
             var body = Encoding.UTF8.GetBytes(json);
             
-            WebRequest request = WebRequest.Create(@"http://ikeima.somee.com/api/" + controller);
+            WebRequest request = WebRequest.Create(IP + controller);
             request.Method = "POST";
             request.ContentType = "application/json";
             request.ContentLength = body.Length;
@@ -30,7 +31,7 @@ namespace Laboratory.Classes
         {
             var body = Encoding.UTF8.GetBytes(json);
 
-            WebRequest request = WebRequest.Create(@"http://ikeima.somee.com/api/" + controller + "/" + id);
+            WebRequest request = WebRequest.Create(IP + controller + "/" + id);
             request.Method = "PUT";
             request.ContentType = "application/json";
             request.ContentLength = body.Length;
@@ -44,7 +45,7 @@ namespace Laboratory.Classes
         }
         public static void Delete(string controller, string id)
         {
-            WebRequest request = WebRequest.Create(@"http://ikeima.somee.com/api/" + controller + "/" + id);
+            WebRequest request = WebRequest.Create(IP + controller + "/" + id);
             request.Method = "DELETE";
 
             using (WebResponse response = request.GetResponse()) { }
@@ -55,7 +56,7 @@ namespace Laboratory.Classes
         {
             try
             {
-                WebRequest request = WebRequest.Create(@"http://ikeima.somee.com/api/users");
+                WebRequest request = WebRequest.Create(IP+"users");
                 using (WebResponse response = request.GetResponse())
                 {
                     using (Stream stream = response.GetResponseStream()) // Получение ответа 
@@ -75,7 +76,7 @@ namespace Laboratory.Classes
         }
         public static List<History> GetHistory()
         {
-            WebRequest request = WebRequest.Create(@"http://ikeima.somee.com/api/history"); 
+            WebRequest request = WebRequest.Create(IP+"history"); 
             using (WebResponse response = request.GetResponse())
             {
                 using (Stream stream = response.GetResponseStream()) 
@@ -89,7 +90,7 @@ namespace Laboratory.Classes
         }
         public static List<Services> GetServices()
         {
-            WebRequest request = WebRequest.Create(@"http://ikeima.somee.com/api/services"); // Создание запроса к API с указанием адреса сайта
+            WebRequest request = WebRequest.Create(IP+"services"); // Создание запроса к API с указанием адреса сайта
             using (WebResponse response = request.GetResponse())
             {
                 using (Stream stream = response.GetResponseStream()) // Получение ответа 
@@ -103,7 +104,7 @@ namespace Laboratory.Classes
         }
         public static List<Patients> GetPatients()
         {
-            WebRequest request = WebRequest.Create(@"http://ikeima.somee.com/api/patients");
+            WebRequest request = WebRequest.Create(IP+"patients");
             using (WebResponse response = request.GetResponse())
             {
                 using (Stream stream = response.GetResponseStream())
@@ -117,7 +118,7 @@ namespace Laboratory.Classes
         }
         public static Patients GetPatient(string id)
         {
-            WebRequest request = WebRequest.Create(@"http://ikeima.somee.com/api/patients/" + id);
+            WebRequest request = WebRequest.Create(IP+"patients/" + id);
             using (WebResponse response = request.GetResponse())
             {
                 using (Stream stream = response.GetResponseStream())
@@ -131,7 +132,7 @@ namespace Laboratory.Classes
         }
         public static List<Orders> GetOrders()
         {
-            WebRequest request = WebRequest.Create(@"http://ikeima.somee.com/api/orders/");
+            WebRequest request = WebRequest.Create(IP+"orders/");
             request.Timeout = 10000;
             using (WebResponse response = request.GetResponse())
             {
@@ -146,7 +147,7 @@ namespace Laboratory.Classes
         }
         public static List<Insurance_companies> GetCompanies()
         {
-            WebRequest request = WebRequest.Create("http://ikeima.somee.com/api/insuranceCompanies");
+            WebRequest request = WebRequest.Create(IP+"insuranceCompanies");
 
             using (WebResponse response = request.GetResponse())
             {
@@ -161,7 +162,7 @@ namespace Laboratory.Classes
         }
         public static List<Accounts> GetAccounts()
         {
-            WebRequest request = WebRequest.Create("http://ikeima.somee.com/api/accounts");
+            WebRequest request = WebRequest.Create(IP+"accounts");
             using (WebResponse response = request.GetResponse())
             {
                 using (Stream stream = response.GetResponseStream())
@@ -175,7 +176,7 @@ namespace Laboratory.Classes
         }
         public static List<Patients_services> GetPatientsServices()
         {
-            WebRequest request = WebRequest.Create("http://ikeima.somee.com/api/patientsServices");
+            WebRequest request = WebRequest.Create(IP+"patientsServices");
             using (WebResponse response = request.GetResponse())
             {
                 using (Stream stream = response.GetResponseStream())
@@ -189,7 +190,7 @@ namespace Laboratory.Classes
         }
         public static List<Accountants> GetAccountants()
         {
-            WebRequest request = WebRequest.Create("http://ikeima.somee.com/api/accountants");
+            WebRequest request = WebRequest.Create(IP+"accountants");
             using (WebResponse response = request.GetResponse())
             {
                 using (Stream stream = response.GetResponseStream())
