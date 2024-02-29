@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\Users\Keima\source\repos\Laboratory\obj\Debug\
+C:\Users\Amir\source\repos\Laboratory-20240229T160718Z-001\Laboratory\obj\Debug\
 Laboratory
 none
 false
 DEBUG;TRACE
-C:\Users\Keima\source\repos\Laboratory\App.xaml
-18909061103
-21322056873
-45-1831813957
-231321468731
+C:\Users\Amir\source\repos\Laboratory-20240229T160718Z-001\Laboratory\App.xaml
+181635304514
+2-408424957
+45-1059077348
+231488189790
 MainWindow.xaml;Pages\AccountantPages\AccountantPage.xaml;Pages\AccountantPages\AccountsPage.xaml;Pages\AccountantPages\AddAccountWindow.xaml;Pages\AccountantPages\CompaniesPage.xaml;Pages\AccountantPages\EditAccountWindow.xaml;Pages\AccountantPages\PersonalDataProcessingWindow.xaml;Pages\AdminPages\AdminPage.xaml;Pages\AdminPages\HistoryPage.xaml;Pages\AutorisationPage.xaml;Pages\TechnicianPages\AddPatientWindow.xaml;Pages\TechnicianPages\BarcodePage.xaml;Pages\TechnicianPages\EditPatientWindow.xaml;Pages\TechnicianPages\OrderConfirmation.xaml;Pages\TechnicianPages\PatientInformationWindow.xaml;Pages\TechnicianPages\PatientsListPage.xaml;Pages\TechnicianPages\ServicesPage.xaml;Pages\TechnicianPages\TechnicianPage.xaml;
 
 False
